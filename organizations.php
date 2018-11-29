@@ -1,25 +1,7 @@
 <?php
     include 'inc/header.php';
-     
-    // Pipedrive API token
-    $api_token = '68926f84300763d38ff5ea52f9f12b0039814782';
+    require 'config/config.php';
 
-    // Pipedrive company domain
-    $company_domain = 'allaboutpc-124cff';
-     
-    // URLs for Organizations and Notes listing with $company_domain and $api_token variables
-    $url_org = 'https://'.$company_domain.'.pipedrive.com/v1/organizations?api_token='.$api_token;
-    $url_notes = 'https://'.$company_domain.'.pipedrive.com/v1/notes?api_token='.$api_token;
-
-    //GET request
-    $ch_org = curl_init();
-    curl_setopt($ch_org, CURLOPT_URL, $url_org);
-    curl_setopt($ch_org, CURLOPT_RETURNTRANSFER, true);
-
-    $ch_notes = curl_init();
-    curl_setopt($ch_notes, CURLOPT_URL, $url_notes);
-    curl_setopt($ch_notes, CURLOPT_RETURNTRANSFER, true);
-     
     echo '<h4>List of organizations: '.PHP_EOL.'</h4>';
      
     $output_org = curl_exec($ch_org);

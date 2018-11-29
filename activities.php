@@ -1,37 +1,23 @@
 <?php
     include 'inc/header.php';
+    require 'config/config.php';
      
-    // Pipedrive API token
-    $api_token = '68926f84300763d38ff5ea52f9f12b0039814782';
-
-    // Pipedrive company domain
-    $company_domain = 'allaboutpc-124cff';
-     
-    //URL for Activities listing with $company_domain and $api_token variables
-    $url = 'https://'.$company_domain.'.pipedrive.com/v1/activities?api_token='.$api_token;
-     
-    //GET request
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-     
-    // echo 'Sending request...'.PHP_EOL;
     echo '<h4>List of activities: '.PHP_EOL.'</h4>';
      
-    $output = curl_exec($ch);
-    curl_close($ch);
+    $output_activ = curl_exec($ch_activ);
+    curl_close($ch_activ);
      
     // Create an array from the data that is sent back from the API
     // As the original content from server is in JSON format, convert it to a PHP array
-    $result = json_decode($output, true);
+    $result_activ = json_decode($output_activ, true);
 
     // Check if data returned in the result is not empty
-    if (empty($result['data'])) {
+    if (empty($result_activ['data'])) {
         exit('No activities created yet'.PHP_EOL);
     }
 
     // Iterate over all found activities
-    foreach ($result['data'] as $key => $activity) {
+    foreach ($result_activ['data'] as $key => $activity) {
         $activity_subject = $activity['subject'];
         $activity_organization = $activity['org_name'];
         $activity_person_name = $activity['person_name'];
