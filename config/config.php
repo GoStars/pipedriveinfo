@@ -1,9 +1,9 @@
 <?php
     // Pipedrive API token
-    $api_token = '68926f84300763d38ff5ea52f9f12b0039814782';
+    $api_token = '';
 
     // Pipedrive company domain
-    $company_domain = 'allaboutpc-124cff';
+    $company_domain = '';
      
     // URLs for Organizations, Persons, Deals, Activities and Notes listing, 
     // with $company_domain and $api_token variables
